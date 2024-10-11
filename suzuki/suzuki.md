@@ -80,7 +80,7 @@ $k(=2\kappa)$次積公式 : $S_{2\kappa}(t)=S_{2\kappa-2}(u_\kappa t)^2S_{2\kapp
 
 としたとき$u_\kappa=1/(4-4^{1/(2\kappa-1)})$
 
-![2](https://github.com/HayatoYunoki/paperalert/blob/main/suzuki/2.pdf)
-![4](https://github.com/HayatoYunoki/paperalert/blob/main/suzuki/4.pdf)
+![2](2.pdf)
+![4](4.pdf)
 
 
