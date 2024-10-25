@@ -17,7 +17,7 @@ $H=A+B$
 
 2次の積公式を以下で定義
 
-$S_2(t)\coloneqq\exp(At/2)\exp(Bt)\exp(At/2)$
+$S_2(t):=\exp(At/2)\exp(Bt)\exp(At/2)$
 
 一般に$k$次の積公式$S_k(t)$が分かっているとすると
 
@@ -160,7 +160,7 @@ $w_0=1-2\sum_j w_j$(証明の過程で簡単に示される)を用いると計�
 ![yoshida](yoshida.png)
 
 
-### Processed product formulae
+## Processed product formulae
 
 参考文献が多すぎて追いきれていないが1996~2006あたりに開発された手法
 
@@ -176,7 +176,7 @@ $\Sigma$のパラメータを見つけ, $P$は既に知られているものを�
 
 詳細は省略
 
-### Greatly improved higher-order product formulae for quantum simulation
+## Greatly improved higher-order product formulae for quantum simulation
 
 [Mauro E. S. Morales+, arXiv, 2024]
 
