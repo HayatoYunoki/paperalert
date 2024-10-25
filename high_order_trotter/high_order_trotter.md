@@ -94,7 +94,7 @@ $S^{(m)}(t)=(\Pi^m_{j=1}S_2(w_{m-j+1}t))S_2(w_0t)(\Pi_{j=1}^mS_2(w_jt))$
 
 task : $S^{(m)}$が$k$次の積公式になるような$m$と$w_i$を見つける
 
-### 背景知識 : Symmetric Baker-Campbell-Haussforff公式
+### 背景知識 : Symmetric Baker-Campbell-Haussdorff公式
 
 $\|X\|+\|Y\|<\ln 2$, $t\in \mathbb{R}$, $S_2(t)=\exp(Z)$としたとき以下が成立
 
