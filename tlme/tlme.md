@@ -3,7 +3,7 @@
 # Lindblad formed Time Local Master Equationの導出
 
 $\frac{d\rho_S(t)}{dt}=-i[H_S(t), \rho_S(t)]
-    +\sum_i \Gamma_i(t)[L_i(t)\rho_S(t)L_i(t)^\dag-\frac{1}{2}\{L_i(t)^\dag L_i(t), \rho_S(t)\}]$
+    +\sum_i \Gamma_i(t)[L_i(t)\rho_S(t)L_i(t)^\dagger-\frac{1}{2}\{L_i(t)^\dagger L_i(t), \rho_S(t)\}]$
 
 の導出を目指す
 
@@ -45,7 +45,7 @@ Redfield方程式も含めてtime-localなマスター方程式はまとめてti
 導出したい
 
 $\frac{d\rho_S(t)}{dt}=-i[H_S(t), \rho_S(t)]
-    +\sum_i \Gamma_i(t)[L_i(t)\rho_S(t)L_i(t)^\dag-\frac{1}{2}\{L_i(t)^\dag L_i(t), \rho_S(t)\}]$
+    +\sum_i \Gamma_i(t)[L_i(t)\rho_S(t)L_i(t)^\dagger-\frac{1}{2}\{L_i(t)^\dagger L_i(t), \rho_S(t)\}]$
 
 はLindblad型(Lindblad form, GKSL likeなど様々)のtime local master equationと呼ばれる.
 
@@ -58,7 +58,7 @@ non-markovを記述するマスター方程式をtime-localにする方法は他
 **Canonical form of master equations and characterization of non-Markovianity [Michael J.+, PRA, 2014]**
 
 - 任意のtime local master equationはLindblad-like formとして書ける
-- すなはち $\dot{\rho}=\Lambda_t[\rho]=\sum_kA_k(t)\rho B_k^\dag(t)$と書ける
+- すなはち $\dot{\rho}=\Lambda_t[\rho]=\sum_kA_k(t)\rho B_k^\dagger(t)$と書ける
 [ V. Gorini, A. Kossakowski, and E. C. G. Sudarshan, J. Math.Phys. 17, 821 (1976).]
 - ここからごりごり計算していくとLindblad型time local master equaitonが得られる
 
