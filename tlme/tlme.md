@@ -58,7 +58,7 @@ non-markovを記述するマスター方程式をtime-localにする方法は他
 **Canonical form of master equations and characterization of non-Markovianity [Michael J.+, PRA, 2014]**
 
 - 任意のtime local master equationはLindblad-like formとして書ける
-- すなはち $\dot{\rho}=\Lambda_t[\rho]=\sum_kA_k(t)\rho B_k^\dagger(t)$と書ける
+- つまり $\dot{\rho}=\Lambda_t[\rho]=\sum_kA_k(t)\rho B_k^\dagger(t)$と書ける
 [ V. Gorini, A. Kossakowski, and E. C. G. Sudarshan, J. Math.Phys. 17, 821 (1976).]
 - ここからごりごり計算していくとLindblad型time local master equaitonが得られる
 
