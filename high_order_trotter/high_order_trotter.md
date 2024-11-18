@@ -2,6 +2,20 @@
 
 # 高次トロッター分解
 
+- [高次トロッター分解](#高次トロッター分解)
+  - [背景知識](#背景知識)
+  - [Suzuki's fractal method](#suzukis-fractal-method)
+  - [Yoshida's method](#yoshidas-method)
+    - [Approach](#approach)
+    - [背景知識 : Symmetric Baker-Campbell-Haussdorff公式](#背景知識--symmetric-baker-campbell-haussdorff公式)
+    - [6次の積公式の場合](#6次の積公式の場合)
+  - [Processed product formulae](#processed-product-formulae)
+  - [Greatly improved higher-order product formulae for quantum simulation](#greatly-improved-higher-order-product-formulae-for-quantum-simulation)
+    - [手法1](#手法1)
+    - [手法2](#手法2)
+    - [結果](#結果)
+    - [性能評価手法の提案](#性能評価手法の提案)
+
 ## 背景知識
 $H=A+B$
 
@@ -48,6 +62,8 @@ $S_2$を用いて偶数次に対して再帰的に定義
 
 $S_{2m}(t)=S_{2m-1}(t)$
 
+expの数 : $2(J-1)3^{\kappa-1}+1$ ($J$はハミルトニアン$H$の項の数)
+
 **3次のときの簡単な証明**
 
 (準備)
@@ -76,6 +92,8 @@ $k(=2\kappa)$次積公式 : $S_{2\kappa}(t)=S_{2\kappa-2}(u_\kappa t)^2S_{2\kapp
 
 としたとき$u_\kappa=1/(4-4^{1/(2\kappa-1)})$
 
+expの数 : $2(J-1)5^{\kappa-1}+1$ 
+
 ![2](2.pdf)
 ![4](4.pdf)
 
@@ -93,6 +111,8 @@ $k(=2\kappa)$次積公式 : $S_{2\kappa}(t)=S_{2\kappa-2}(u_\kappa t)^2S_{2\kapp
 $S^{(m)}(t)=(\Pi^m_{j=1}S_2(w_{m-j+1}t))S_2(w_0t)(\Pi_{j=1}^mS_2(w_jt))$
 
 task : $S^{(m)}$が$k$次の積公式になるような$m$と$w_i$を見つける
+
+expの数 : $(4m+2)(J-1)+1$ 
 
 ### 背景知識 : Symmetric Baker-Campbell-Haussdorff公式
 
@@ -243,6 +263,61 @@ yoshida形式だけでなく, prosessed形式に対しても解を探索して�
 
 10次に対しては今まで見つけられていなかった解を数多く発見
 
-## 性能評価手法の提案
+### 性能評価手法の提案
 
-とりあえず保留
+異なる次数, 異なるexpの数でも比較ができるような性能比較手法を提案
+
+最適なオーダは$T/\epsilon$に依存(total evolution time/required error)
+
+$T/\epsilon$が小さいときには低次積公式を用いるのがいい, 大きいときには高次にするべき.
+
+その閾値を決定する方法を導出した
+
+<!-- また$T/\epsilon$が$10^6$~$10^{14}$のとき(量子化学への応用を考えると典型的な値), 今回導出した8次積公式がベストであることを示した. -->
+
+$k$次積公式を用いたとき, spectral-normエラーを用いたときの誤差は$\delta(t)=\chi t^{k+1}$, 固有値誤差の場合は$\delta(t)=\zeta t^{k+1}$であるとする. $\epsilon$を最大許容誤差とし, $t=T/r$によって各time stepの長さ(time interval)を定義する.
+
+**same order, different lengthのとき**
+$\chi (T/r)^{k+1}\simeq\epsilon/r$より$r\simeq(\chi T/\epsilon)^{1/k}T$
+
+time intervalあたりのexpの数は$(4m+2)(J-1)+1$. つなぎ合わせると2つのexpは合体するので$(4m+2)(J-1)$. よって合計expの数は
+
+$M(\frac{\chi T}{\epsilon})^{1/k}T$
+
+に比例. ここで$M=2m+1$. つまり同じオーダの積公式を比較したいときは$M \chi^{1/k}$を比較すれば良く, 値が小さいほど効率が良い積公式である. 固有値誤差を見るときは$\chi$を$\zeta$にすればよい.
+
+**異なる次数のとき**
+2つの異なる次数$k_1$, $k_2$があるとする. それらに対応して$\chi_1$, $\chi_2$があるとする. 2つの積公式のexpの数が同じであるとすると
+
+$M_1(\frac{\chi_1 T}{\epsilon})^{1/k_1}T=M_2(\frac{\chi_2 T}{\epsilon})^{1/k_2}T$
+
+ここから
+
+$\frac{T}{\epsilon}=(\frac{M_2\chi_2^{1/k_2}}{M_1\chi_1^{1/k_1}})^\frac{1}{\frac{1}{k_1}-\frac{1}{k_2}}$
+
+この値が高次の側の積公式を用いた方が性能が高くなる閾値となる. 
+
+ハミルトニアンは正規化されているという条件で考えていることに注意
+
+time intervalが長いときはより一般的な方法を取る必要がある.
+
+**measure of error**
+
+- 量子化学など, ハミルトニアンの固有値を推定するのが目標の場合は固有値誤差. 
+- 最終の状態ベクトルに興味がある場合はspectral-norm.←固有値と基底の誤差の両方を考慮したもの
+
+基底誤差と固有値誤差の比は
+
+$\frac{2\mu}{\zeta T}(\frac{\epsilon}{\zeta T})^{\nu k}$
+
+で与えられる. つまり大きな$T$に対して固有値誤差が支配的になる. よってsingle stepに対する固有値誤差は, long-time evolutionに対するspectral-norm誤差を推定するのに適切なmeasureである.
+
+結論
+
+既存研究ではspectral-normエラーを用いられているが, 固有値エラーを用いたほうがよい. 
+なぜなら、より長い時間発展における誤差を支配するのは、単一ステップにおける固有値誤差だから
+
+<!-- $U$をexact, $\tilde{U}$を積公式によるユニタリ行列とする. $U$はハミルトニアンの基底で対角化でき, $\tilde{U}$は$\tilde{U}=VDV^\dagger$と対角化できるとする.
+
+$D$と$U$の差は固有値誤差, $V$は基底誤差を記述する. -->
+

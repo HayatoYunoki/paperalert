@@ -1,5 +1,12 @@
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script> <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
+- [Lindblad formed Time Local Master Equationの導出](#lindblad-formed-time-local-master-equationの導出)
+  - [The theory of open quantum systems (黄緑と黒の教科書, Breuer+)](#the-theory-of-open-quantum-systems-黄緑と黒の教科書-breuer)
+    - [Nakajima-Zwanzig method](#nakajima-zwanzig-method)
+    - [time-convolution technique](#time-convolution-technique)
+  - [Lindblad型time local master equaitonの導出](#lindblad型time-local-master-equaitonの導出)
+
+
 # Lindblad formed Time Local Master Equationの導出
 
 $\frac{d\rho_S(t)}{dt}=-i[H_S(t), \rho_S(t)]
@@ -65,3 +72,10 @@ non-markovを記述するマスター方程式をtime-localにする方法は他
 **Genuine quantum trajectories for non-Markovian processes[Heinz-Peter Breuer, PRL, 2004]**
 
 - 任意のtime local master equationはLindblad-like formとして書ける
+
+- TCLはtime-convolutionless以外の方法でも導ける
+
+
+The Lindblad and Redfield forms derived from the
+Born–Markov master equation without secular
+approximation and their applicationsがほぼ答えに近いものを与えてそう
