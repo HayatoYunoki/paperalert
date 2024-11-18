@@ -208,7 +208,7 @@ yoshida's methodで8次のとき最小の$m$は7, 10次のときは15.
 
 大きい$m$をとるほどエラーを減らせる
 
- ### 手法1
+### 手法1
 
 連立非線形方程式を解くためにMatlabのfsolve(Levenverg-Marquardtアルゴリズム)を用いるとより高速に解が得られる. 小さい値を取る解ほど性能が高い. 大きな値を解は捨てる.
 
@@ -278,6 +278,7 @@ $T/\epsilon$が小さいときには低次積公式を用いるのがいい, 大
 $k$次積公式を用いたとき, spectral-normエラーを用いたときの誤差は$\delta(t)=\chi t^{k+1}$, 固有値誤差の場合は$\delta(t)=\zeta t^{k+1}$であるとする. $\epsilon$を最大許容誤差とし, $t=T/r$によって各time stepの長さ(time interval)を定義する.
 
 **same order, different lengthのとき**
+
 $\chi (T/r)^{k+1}\simeq\epsilon/r$より$r\simeq(\chi T/\epsilon)^{1/k}T$
 
 time intervalあたりのexpの数は$(4m+2)(J-1)+1$. つなぎ合わせると2つのexpは合体するので$(4m+2)(J-1)$. よって合計expの数は
