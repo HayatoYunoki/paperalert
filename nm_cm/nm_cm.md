@@ -56,3 +56,41 @@ Sの状態が純粋であり続けるためには, bathがシステムから切�
 本論文ではDiosiの手法での観測が, そのように時間発展に影響を与えることをexplicitな計算により示した. そしてそれはpure conditional stateを作ることに失敗することも示した.
 
 non-Markovian pure-state trajectories cannot be interpreted as true quantum trajectories.
+
+## Continuous Measurement of a Non-Markovian Open Quantum System [A. Shabani, PRL, 2014]
+
+### Introduction
+
+対象系はTLMEではない
+
+システムはmarkovian (broadband) reservoirとカップリングしたプローブ共振器を経由して測定される
+
+測定結果に条件付けられたシステムの状態をstochastic hierarchy equations of motion (SHEM) としての定式化 (non-Markov, strong decoherence effectsを取り入れている)
+
+bosonic環境とカップリングした量子系の連続測定に対するcavity quantum electrodynamics theory (CQED, キャビティ内の原子と電磁場の相互作用)を開発
+
+この理論の応用として, 連続測定によるデコヒーレンスダイナミクスのnon-Markov性の診断をする分光法
+
+既存のSHEMはnon-Markovの測定としての解釈を記述していない
+
+CQEDでは量子調和振動子はシステムと相互作用するプローブとして働く. 例えば光学だとその調和振動子はシングルモードのcavityとして実現される. ただしphoton lossがあるとする. 漏れてきたphotonから位相や振幅などの情報を抽出し, システムの情報を得る.
+
+single cavity modeとカップリングし, additional bosonic環境と相互作用しているような, 任意の内部構造を持つ量子系に対して測定シナリオを定式化
+
+具体例
+
+Physical examples of such systems include double quantum dots probed by a microwave resonator [21], superconducting qubits with undesired coupling to 3D cavity modes [20,22], and atoms in an optical resonator [8]. Note that Gaussian fluctuations with a fermionic nature can be also effectively modeled as a bosonic bath [23,24].
+
+### A complex system coupled to a cavity
+
+ハミルトニアンの定義. 仮定を入れたり, 周波数をいじったりしてハミルトニアンを計算(ちゃんと理解できていない)
+
+### System decoherence and cavity leakage
+
+ハミルトニアンをダイナミクスを記述するような書き方に書き直す
+
+ダイナミクスの記述をBorn近似, Markov近似を使うような通常のアプローチではなく, hierarchy equations of motion (HOEM) という, 近似を使わずに記述するような手法を用いる.
+
+![model](image.png)
+
+CQEDの文脈での議論をしているので, 総じて雰囲気を掴めた程度
