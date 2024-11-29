@@ -69,6 +69,8 @@ non-Markovian pure-state trajectories cannot be interpreted as true quantum traj
 
 bosonic環境とカップリングした量子系の連続測定に対するcavity quantum electrodynamics theory (CQED, キャビティ内の原子と電磁場の相互作用)を開発
 
+つまり, SHEMとして書けるようなbosonic環境にカップリングした量子系のCOED-based 連続測定の記述を示した
+
 この理論の応用として, 連続測定によるデコヒーレンスダイナミクスのnon-Markov性の診断をする分光法
 
 既存のSHEMはnon-Markovの測定としての解釈を記述していない
@@ -89,8 +91,34 @@ Physical examples of such systems include double quantum dots probed by a microw
 
 ハミルトニアンをダイナミクスを記述するような書き方に書き直す
 
+System, Cavity, Environment, Reservoirの関係を定式化
+
 ダイナミクスの記述をBorn近似, Markov近似を使うような通常のアプローチではなく, hierarchy equations of motion (HOEM) という, 近似を使わずに記述するような手法を用いる.
 
 ![model](image.png)
 
+### Continuous measurement
+
+システムとのカップリングはキャビティの有効周波数を変える→cavityから出てくるphotonは位相にシステムの情報を含んでいる
+
+位相はhomodyne detectionにより測定
+
+観測値がシステムの状態だけを反映するためにleakage timeに仮定を入れて, 断熱的にcavity modeを削除する. これによりmain resultとしてSHEMが得られる
+
 CQEDの文脈での議論をしているので, 総じて雰囲気を掴めた程度
+
+## Non-Markovian Quantum Dynamics in Strongly Coupled Multimode Cavities Conditioned on Continuous Measurement [Valentin Link, PRX Quantum, 2022]
+
+### Introduction
+
+マルチモードCQEDは原子がそれら自身やcavityと強くカップリングしているが, その強いカップリングのせいで環境の連続測定の結果から原子の条件付き状態を推察するのは難しくなる. マルチモードは特に難しい.
+
+本論文ではconditioned HOEM (連続測定・フィードバックの下での状態を正確に記述する) を用いて原子の状態を記述することで定式化を行う.
+
+それを用いることでどのような観測でどのような情報が得られるのかを明らかにする.
+
+具体化のためにキャビティQEDの例で説明されているが、本論文の理論は、検出器の前にあるより大きなマルコフ開放系と2つに分割できる非マルコフbathにcouplingした任意の量子系に適用できる。
+
+![model2](image2.png)
+
+「Genuine quantum trajectories for non-Markovian processes」などのようにnon-Markovian systemをより大きなMarkovian systemに埋め込む手法はよくあるが, 本手法はcavityの異なる測定スキームに対して、reduced systemの条件付き状態を決定する系統的で厳密な理論を提供し、様々な実験セットアップに直結する。

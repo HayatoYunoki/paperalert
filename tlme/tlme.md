@@ -62,20 +62,26 @@ non-markovを記述するマスター方程式をtime-localにする方法は他
 
 ## Lindblad型time local master equaitonの導出
 
-**Canonical form of master equations and characterization of non-Markovianity [Michael J.+, PRA, 2014]**
-
-- 任意のtime local master equationはLindblad-like formとして書ける
-- つまり $\dot{\rho}=\Lambda_t[\rho]=\sum_kA_k(t)\rho B_k^\dagger(t)$と書ける
-[ V. Gorini, A. Kossakowski, and E. C. G. Sudarshan, J. Math.Phys. 17, 821 (1976).]
-- ここからごりごり計算していくとLindblad型time local master equaitonが得られる
-
 **Genuine quantum trajectories for non-Markovian processes[Heinz-Peter Breuer, PRL, 2004]**
+
+https://journals.aps.org/pra/abstract/10.1103/PhysRevA.70.012106
 
 - 任意のtime local master equationはLindblad-like formとして書ける
 
 - TCLはtime-convolutionless以外の方法でも導ける
 
+**Canonical form of master equations and characterization of non-Markovianity [Michael J.+, PRA, 2014]**
 
-The Lindblad and Redfield forms derived from the
-Born–Markov master equation without secular
-approximation and their applicationsがほぼ答えに近いものを与えてそう
+https://arxiv.org/abs/1009.0845
+
+Appendix A
+
+- 任意のtime local master equationはLindblad-like formとして書ける
+- $\dot{\rho}=\Lambda_t[\rho]=\sum_kA_k(t)\rho B_k^\dagger(t)$と書ける
+[ V. Gorini, A. Kossakowski, and E. C. G. Sudarshan, J. Math.Phys. 17, 821 (1976).]
+- ここからごりごり計算していくとLindblad型time local master equaitonが得られる
+
+
+
+
+※「The Lindblad and Redfield forms derived from the Born–Markov master equation without secular approximation and their applications」も割ときれいに導出している
