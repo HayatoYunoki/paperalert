@@ -64,7 +64,7 @@ non-markovを記述するマスター方程式をtime-localにする方法は他
 
 **Genuine quantum trajectories for non-Markovian processes[Heinz-Peter Breuer, PRL, 2004]**
 
-https://journals.aps.org/pra/abstract/10.1103/PhysRevA.70.012106
+[https://journals.aps.org/pra/abstract/10.1103/PhysRevA.70.012106]
 
 - 任意のtime local master equationはLindblad-like formとして書ける
 
@@ -72,7 +72,7 @@ https://journals.aps.org/pra/abstract/10.1103/PhysRevA.70.012106
 
 **Canonical form of master equations and characterization of non-Markovianity [Michael J.+, PRA, 2014]**
 
-https://arxiv.org/abs/1009.0845
+[https://arxiv.org/abs/1009.0845]
 
 Appendix A
 
