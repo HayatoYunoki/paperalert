@@ -128,3 +128,5 @@ $d\rho=\Omega_0\rho\Omega_0^\dagger-\rho+dt\sum_{j=1, 2}\kappa_jU_ja_j\rho a_j^\
 2. ホモダイン測定
 
 aa
+
+後で追加

@@ -77,7 +77,7 @@ $|1\rangle_L\equiv (|01\rangle +|10\rangle)/\sqrt{2}$
 
 stabilizer generatorはXX
 
-jumpに対応するKraus演算子は$\Omega_j=\sqrt{\kappa_j dt}(X_j-iY_j)\equiv\sqrt{\kappa_j dt}a_j$
+jumpに対応するKraus演算子は$\Omega_j=\sqrt{\kappa_j dt}(X_j+iY_j)\equiv\sqrt{\kappa_j dt}a_j$
 
 $4\kappa_j$がdecay rateに相当
 
@@ -127,3 +127,6 @@ $d\rho=\Omega_0\rho\Omega_0^\dagger-\rho+dt\sum_{j=1, 2}\kappa_jU_ja_j\rho a_j^\
 
 2. ホモダイン測定
 
+aa
+
+後で追加
