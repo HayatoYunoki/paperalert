@@ -1,0 +1,199 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>連続測定によるフィードバックを用いた量子誤り訂正 &mdash; yunoki_document 1.0.0 ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=144c8c96"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="non-Markovの連続測定は可能なのか" href="../nm_cm/nm_cm.html" />
+    <link rel="prev" title="Quantum feedback control" href="../feedback_control/feedback_control.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            yunoki_document
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../high_order_trotter/high_order_trotter.html">高次トロッター分解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tlme/tlme.html">Lindblad formed Time Local Master Equationの導出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feedback_control/feedback_control.html">Quantum feedback control</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">連続測定によるフィードバックを用いた量子誤り訂正</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#inversion-of-quantum-jumps-in-quantum-optical-systems-under-continuous-observation">Inversion of Quantum Jumps in Quantum Optical Systems under Continuous Observation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quantum-error-correction-for-continuously-detected-errors">Quantum error correction for continuously detected errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../nm_cm/nm_cm.html">non-Markovの連続測定は可能なのか</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">yunoki_document</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">連続測定によるフィードバックを用いた量子誤り訂正</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/feedback_qec/feedback_qec.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script> <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<section id="id1">
+<h1>連続測定によるフィードバックを用いた量子誤り訂正<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="#%E9%80%A3%E7%B6%9A%E6%B8%AC%E5%AE%9A%E3%81%AB%E3%82%88%E3%82%8B%E3%83%95%E3%82%A3%E3%83%BC%E3%83%89%E3%83%90%E3%83%83%E3%82%AF%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E9%87%8F%E5%AD%90%E8%AA%A4%E3%82%8A%E8%A8%82%E6%AD%A3"><span class="xref myst">連続測定によるフィードバックを用いた量子誤り訂正</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#inversion-of-quantum-jumps-in-quantum-optical-systems-under-continuous-observation"><span class="xref myst">Inversion of Quantum Jumps in Quantum Optical Systems under Continuous Observation</span></a></p></li>
+<li><p><a class="reference internal" href="#quantum-error-correction-for-continuously-detected-errors"><span class="xref myst">Quantum error correction for continuously detected errors</span></a></p></li>
+</ul>
+</li>
+</ul>
+<section id="inversion-of-quantum-jumps-in-quantum-optical-systems-under-continuous-observation">
+<h2>Inversion of Quantum Jumps in Quantum Optical Systems under Continuous Observation<a class="headerlink" href="#inversion-of-quantum-jumps-in-quantum-optical-systems-under-continuous-observation" title="Link to this heading"></a></h2>
+<p>[H. Mabuchi and P. Zoller, PRL, 1996]</p>
+<p>量子ジャンプ(デコヒーレンス, 散逸)をフィードバック($U_i$)により打ち消すことができる条件を導出</p>
+<p>つまり$|\psi_c\rangle\rightarrow L_i|\psi_c\rangle$に対して$|\psi_c(t+dt)\rangle=U_i L_i|\psi(t)\rangle$としたい</p>
+<p>(正規化は無視して書いています(以降も))</p>
+<p>コヒーレンス(情報)が不可逆的に失われるため$L_i^\dagger$を作用させるだけではダメ</p>
+<p>(ジャンプがないときの$H_{\mathrm{eff}}$による時間発展を考慮できていない)</p>
+<p>条件1 : $L_i=k_iU^{-1}_i (k_i\in\mathbb{C})$</p>
+<p>条件2 : $H_S$は着目している部分空間を変えない</p>
+<p>このときジャンプとジャンプの間のダイナミクスは</p>
+<p>$|\psi_c(t+dt)\rangle=e^{-iH_{\mathrm{eff}}dt}|\psi(t)\rangle=e^{-1/2\sum_i |k_i|^2 dt}e^{-iH_S dt}|\psi(t)\rangle$</p>
+<p>($H_S$による時間発展だけで書けている)</p>
+<p>ジャンプの発生を$U_i$で打ち消すダイナミクスを考えると</p>
+<p>$|\psi_c(t)\rangle=e^{-iH_{\mathrm{eff}}(t-t_n)}U_{j_n}L_{j_n}\cdots U_{j_1}L_{j_1}e^{-iH_{\mathrm{eff}}(t_1)}|\psi(0)\rangle=e^{-iH_S dt}|\psi(t)\rangle$</p>
+<p>($L_i$によるデコヒーレンスをすべてキャンセルできている)</p>
+<p>論文内では2種類の実験提案(ここでは説明を省略)</p>
+<p>QECに使える</p>
+<p>量子メモリのコヒーレンスを保存</p>
+<p>Shor符号などと異なりancillaが必要ない</p>
+<p>特定のモデルでしか使えない</p>
+</section>
+<section id="quantum-error-correction-for-continuously-detected-errors">
+<h2>Quantum error correction for continuously detected errors<a class="headerlink" href="#quantum-error-correction-for-continuously-detected-errors" title="Link to this heading"></a></h2>
+<p>[C. Ahn, H. M. Wiseman, and G. J. Milburn, PRA, 2003]</p>
+<p>環境との相互作用によるコヒーレンスの消失は往々にして問題になる</p>
+<p>通常のQEC(discrete QEC): 射影測定(エラーシンドロームを取得)→ユニタリにより訂正
+今回(continous QEC): 連続測定→ハミルトニアンフィードバック</p>
+<p>今回は特定の重要なエラーを訂正する(一般のエラーへの対応と符号化の冗長性はトレードオフ)</p>
+<p>ジャンプ測定でもホモダイン測定でも可能</p>
+<p>マルコフフィードバックとdrivingハミルトニアン(feedbackハミルトニアンとは別)がキー</p>
+<p>2qubit codeで自発的な光子放出によるエラーが生じる例(論文内ではより一般のエラーに対する誤り訂正についても示されているが今回はこれだけに着目)</p>
+<p>ジャンプ演算子$L=|0\rangle\langle1 |$</p>
+<p>driving Hamiltonianはno emmision evolutionを訂正する</p>
+<ol class="arabic simple">
+<li><p>ジャンプ測定
+符号語は</p></li>
+</ol>
+<p>$|0\rangle_L\equiv (|00\rangle +|11\rangle)/\sqrt{2}$</p>
+<p>$|1\rangle_L\equiv (|01\rangle +|10\rangle)/\sqrt{2}$</p>
+<p>stabilizer generatorはXX</p>
+<p>jumpに対応するKraus演算子は$\Omega_j=\sqrt{\kappa_j dt}(X_j+iY_j)\equiv\sqrt{\kappa_j dt}a_j$</p>
+<p>$4\kappa_j$がdecay rateに相当</p>
+<p>フィードバックがないときのマスター方程式(Lindblad)は</p>
+<p>$\frac{d\rho}{dt}=\sum_{j=1, 2}-i[H, \rho]+\kappa_j \mathcal{D}[X_j-iY_j]\rho$</p>
+<p>エラー訂正が可能であることは以下の必要十分条件が成り立つことから分かる</p>
+<p>$\langle\psi_\mu|E^\dagger E|\psi_\nu\rangle=\Lambda_E \delta_{\mu, \nu}$</p>
+<p>ここで$E$はエラーの測定に対応する演算子, $\Lambda_E$は定数</p>
+<p>より具体的に言うとfirst qubitに光子放出が起こったとき状態は$|0\rangle_L\rightarrow |01\rangle$, $|1\rangle_L\rightarrow |00\rangle$で, これらが直交しているということ.</p>
+<p>correcting unitaryは</p>
+<p>$U_1=(XI-ZX)/\sqrt{2}$</p>
+<p>$U_2=(IX-XZ)/\sqrt{2}$</p>
+<p>光子放出によるジャンプのエラーはこれで訂正できている.</p>
+<p>さらにジャンプが生じないときの時間発展($H_{\mathrm{eff}}$による時間発展)におけるジャンプの影響を取り除く必要がある.</p>
+<p>ジャンプが生じないときの時間発展を表すKraus演算子は</p>
+<p>$\Omega_0=II(1-(\kappa_1+\kappa_2)dt)-\kappa_1 dt ZI-\kappa_2 dt IZ -iHdt$</p>
+<p>driving Hamiltonian $H$を</p>
+<p>$H=-(\kappa_1 YX+\kappa_2 XY)$</p>
+<p>とするとKraus演算子は</p>
+<p>$\Omega_0=II(1-(\kappa_1+\kappa_2)dt)-\kappa_1 dt ZI(II-XX)-\kappa_2 dt IZ(II-XX)$</p>
+<p>$(II-XX)$は符号空間を消失させるため$\Omega_0$は符号空間を変えないことが分かる.</p>
+<p>従ってフィードバックによるエラー訂正があるときのSSEは</p>
+<p>$d\rho=\Omega_0\rho\Omega_0^\dagger-\rho+dt\sum_{j=1, 2}\kappa_jU_ja_j\rho a_j^\dagger U_j^\dagger$.</p>
+<p>フィードバックハミルトニアンは$H_{fb}=\sum_{1, 2}\frac{dN_j(t)}{dt}V_j$と書ける</p>
+<p>ここで$V_j$は$U_j=\exp(-iV_j)$を満たす. ($V_j$は$U_j$に比例する(？))</p>
+<ol class="arabic simple" start="2">
+<li><p>ホモダイン測定</p></li>
+</ol>
+<p>aa</p>
+<p>後で追加</p>
+<p>deployテスト</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../feedback_control/feedback_control.html" class="btn btn-neutral float-left" title="Quantum feedback control" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../nm_cm/nm_cm.html" class="btn btn-neutral float-right" title="non-Markovの連続測定は可能なのか" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, HayatoYunoki.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lindblad formed Time Local Master Equationの導出 &mdash; yunoki_document 1.0.0 ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=144c8c96"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="Quantum feedback control" href="../feedback_control/feedback_control.html" />
+    <link rel="prev" title="高次トロッター分解" href="../high_order_trotter/high_order_trotter.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            yunoki_document
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../high_order_trotter/high_order_trotter.html">高次トロッター分解</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Lindblad formed Time Local Master Equationの導出</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-theory-of-open-quantum-systems-breuer">The theory of open quantum systems (黄緑と黒の教科書, Breuer+)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nakajima-zwanzig-method">Nakajima-Zwanzig method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#time-convolution-technique">time-convolution technique</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lindbladtime-local-master-equaiton">Lindblad型time local master equaitonの導出</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../feedback_control/feedback_control.html">Quantum feedback control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../feedback_qec/feedback_qec.html">連続測定によるフィードバックを用いた量子誤り訂正</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nm_cm/nm_cm.html">non-Markovの連続測定は可能なのか</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">yunoki_document</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Lindblad formed Time Local Master Equationの導出</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tlme/tlme.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script> <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lindblad-formed-time-local-master-equation%E3%81%AE%E5%B0%8E%E5%87%BA"><span class="xref myst">Lindblad formed Time Local Master Equationの導出</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#the-theory-of-open-quantum-systems-%E9%BB%84%E7%B7%91%E3%81%A8%E9%BB%92%E3%81%AE%E6%95%99%E7%A7%91%E6%9B%B8-breuer"><span class="xref myst">The theory of open quantum systems (黄緑と黒の教科書, Breuer+)</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#nakajima-zwanzig-method"><span class="xref myst">Nakajima-Zwanzig method</span></a></p></li>
+<li><p><a class="reference internal" href="#time-convolution-technique"><span class="xref myst">time-convolution technique</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#lindblad%E5%9E%8Btime-local-master-equaiton%E3%81%AE%E5%B0%8E%E5%87%BA"><span class="xref myst">Lindblad型time local master equaitonの導出</span></a></p></li>
+</ul>
+</li>
+</ul>
+<section id="lindblad-formed-time-local-master-equation">
+<h1>Lindblad formed Time Local Master Equationの導出<a class="headerlink" href="#lindblad-formed-time-local-master-equation" title="Link to this heading"></a></h1>
+<p>$\frac{d\rho_S(t)}{dt}=-i[H_S(t), \rho_S(t)]
++\sum_i \Gamma_i(t)[L_i(t)\rho_S(t)L_i(t)^\dagger-\frac{1}{2}{L_i(t)^\dagger L_i(t), \rho_S(t)}]$</p>
+<p>の導出を目指す</p>
+<section id="the-theory-of-open-quantum-systems-breuer">
+<h2>The theory of open quantum systems (黄緑と黒の教科書, Breuer+)<a class="headerlink" href="#the-theory-of-open-quantum-systems-breuer" title="Link to this heading"></a></h2>
+<p>9章</p>
+<p>projection operator tequnique : non-Markovも含めた開放量子系を記述する方程式を導出する手法</p>
+<p>「環境系の部分トレースを$\rho\mapsto\mathcal{P}\rho$とする」というのがベースとなる</p>
+<p>ハミルトニアン$H=H_0+\alpha H_I$</p>
+<p>von-Neumann方程式から出発</p>
+<section id="nakajima-zwanzig-method">
+<h3>Nakajima-Zwanzig method<a class="headerlink" href="#nakajima-zwanzig-method" title="Link to this heading"></a></h3>
+<p>かなりごちゃこちゃした計算をするとNakajima-Zwanzig方程式が得られる</p>
+<p>$\frac{\partial}{\partial t}\mathcal{P}\rho(t)=\int_{t_0}^t ds\mathcal{K}(t, s)\mathcal{P}\rho(s)+\alpha\mathcal{P}\mathcal{L}(t)\mathcal{G}(t, t_0)\mathcal{Q}\rho(t_0)$</p>
+<p>妥当な仮定を与えて, $\alpha$で2次までの摂動展開をすると</p>
+<p>$\frac{\partial}{\partial t}\rho_S(t)=-\alpha^2\int_{t_0}^t ds \mathrm{Tr}_E[H_I(t), [H_I(s), \rho(s)\otimes\rho_E]]$</p>
+<p>time-localではない→扱いにくい</p>
+</section>
+<section id="time-convolution-technique">
+<h3>time-convolution technique<a class="headerlink" href="#time-convolution-technique" title="Link to this heading"></a></h3>
+<p>かなりごちゃこちゃした計算をするとTCL方程式が得られる.</p>
+<p>$\frac{\partial}{\partial t}\mathcal{P}\rho(t)=\mathcal{K}(t)\mathcal{P}\rho(t)+\mathcal{I}(t)\mathcal{Q}\rho(t_0)$</p>
+<p>すでにtime-local</p>
+<p>同様に$\alpha$の2次まで摂動展開すると</p>
+<p>Redfield方程式 $\frac{\partial}{\partial t}\rho_S(t)=-\alpha^2\int_{t_0}^t ds \mathrm{Tr}_E[H_I(t), [H_I(s), \rho(t)\otimes\rho_E]]$</p>
+<p>Redfield方程式も含めてtime-localなマスター方程式はまとめてtime local master equationと呼ぶらしい</p>
+<p>導出したい</p>
+<p>$\frac{d\rho_S(t)}{dt}=-i[H_S(t), \rho_S(t)]
++\sum_i \Gamma_i(t)[L_i(t)\rho_S(t)L_i(t)^\dagger-\frac{1}{2}{L_i(t)^\dagger L_i(t), \rho_S(t)}]$</p>
+<p>はLindblad型(Lindblad form, GKSL likeなど様々)のtime local master equationと呼ばれる.</p>
+<p>non-markovを記述するマスター方程式をtime-localにする方法は他にもあるっぽいが, この方法がスタンダードっぽい</p>
+<p>※10章に具体例を考えたときにLindblad型のtime local master equation形式のマスター方程式が出てくるが, これはRedfield方程式から導いたものではなく, その具体例を考えたら(摂動展開などを与えなくても)たまたまそうなっているだけ</p>
+</section>
+</section>
+<section id="lindbladtime-local-master-equaiton">
+<h2>Lindblad型time local master equaitonの導出<a class="headerlink" href="#lindbladtime-local-master-equaiton" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.70.012106"><strong>Genuine quantum trajectories for non-Markovian processes[Heinz-Peter Breuer, PRL, 2004]</strong></a></p>
+<ul class="simple">
+<li><p>任意のtime local master equationはLindblad-like formとして書ける</p></li>
+<li><p>TCLはtime-convolutionless以外の方法でも導ける</p></li>
+</ul>
+<p><a class="reference external" href="https://arxiv.org/abs/1009.0845"><strong>Canonical form of master equations and characterization of non-Markovianity [Michael J.+, PRA, 2014]</strong></a></p>
+<p>Appendix A</p>
+<ul class="simple">
+<li><p>任意のtime local master equationはLindblad-like formとして書ける</p></li>
+<li><p>$\dot{\rho}=\Lambda_t[\rho]=\sum_kA_k(t)\rho B_k^\dagger(t)$と書ける
+[ V. Gorini, A. Kossakowski, and E. C. G. Sudarshan, J. Math.Phys. 17, 821 (1976).]</p></li>
+<li><p>ここからごりごり計算していくとLindblad型time local master equaitonが得られる</p></li>
+</ul>
+<p>※「The Lindblad and Redfield forms derived from the Born–Markov master equation without secular approximation and their applications」も割ときれいに導出している</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../high_order_trotter/high_order_trotter.html" class="btn btn-neutral float-left" title="高次トロッター分解" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../feedback_control/feedback_control.html" class="btn btn-neutral float-right" title="Quantum feedback control" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, HayatoYunoki.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quantum feedback control &mdash; yunoki_document 1.0.0 ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=144c8c96"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="連続測定によるフィードバックを用いた量子誤り訂正" href="../feedback_qec/feedback_qec.html" />
+    <link rel="prev" title="Lindblad formed Time Local Master Equationの導出" href="../tlme/tlme.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            yunoki_document
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../high_order_trotter/high_order_trotter.html">高次トロッター分解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tlme/tlme.html">Lindblad formed Time Local Master Equationの導出</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quantum feedback control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gaussian-measurement">Gaussian measurement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Gaussian measurementの基礎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Gaussian measurementの連続測定に対するマスター方程式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sse">SSE</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#continuous-measuement-based-feedback-control">continuous measuement-based feedback control</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../feedback_qec/feedback_qec.html">連続測定によるフィードバックを用いた量子誤り訂正</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nm_cm/nm_cm.html">non-Markovの連続測定は可能なのか</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">yunoki_document</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Quantum feedback control</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/feedback_control/feedback_control.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script> <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<section id="quantum-feedback-control">
+<h1>Quantum feedback control<a class="headerlink" href="#quantum-feedback-control" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="#quantum-feedback-control"><span class="xref myst">Quantum feedback control</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#gaussian-measurement"><span class="xref myst">Gaussian measurement</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#gaussian-measurement%E3%81%AE%E5%9F%BA%E7%A4%8E"><span class="xref myst">Gaussian measurementの基礎</span></a></p></li>
+<li><p><a class="reference internal" href="#gaussian-measurement%E3%81%AE%E9%80%A3%E7%B6%9A%E6%B8%AC%E5%AE%9A%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC%E6%96%B9%E7%A8%8B%E5%BC%8F"><span class="xref myst">Gaussian measurementの連続測定に対するマスター方程式</span></a></p></li>
+<li><p><a class="reference internal" href="#sse"><span class="xref myst">SSE</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#continuous-measuement-based-feedback-control"><span class="xref myst">continuous measuement-based feedback control</span></a></p></li>
+</ul>
+</li>
+</ul>
+<p>Gaussian measurementsの導入とWiseman-Milburn方程式の導出まで</p>
+<p>参考文献</p>
+<p>Annby-Andersson, B. (2024). Continuous measurements of small systems: Feedback control, thermodynamics, entanglement. Ph.D. thesis. Lund University.</p>
+<section id="gaussian-measurement">
+<h2>Gaussian measurement<a class="headerlink" href="#gaussian-measurement" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Gaussian measurementの基礎<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>離散観測結果$m$に対応するKraus演算子$K_m$の代わりに, 連続観測結果$z$に対応する$K_z$ (Gaussian measurement演算子) を導入.</p>
+<p>$K(z)=(\frac{2\lambda dt}{\pi})^{1/4}e^{-\lambda dt (z-A)^2}$</p>
+<p>ここで$A$はエルミートな観測量.</p>
+<p>$\lambda$は観測の強度を表す. $\lambda\rightarrow\infty$のとき射影測定を表す (コヒーレンスは破壊, 不確定性小). $\lambda\rightarrow 0$のときweak measurement (システムに与える影響は小さい, コヒーレンス保存, 不確定性大).</p>
+<p>→トレードオフ</p>
+<p>測定ノイズがGaussian</p>
+<p>2準位系の例 (黄色がコヒーレンス部分)
+<img alt="alt text" src="../_images/gaussian_measurement.png" /></p>
+</section>
+<section id="id2">
+<h3>Gaussian measurementの連続測定に対するマスター方程式<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>条件付き密度演算子</p>
+<p>$\rho_c(t+dt)=e^{\mathcal{L}dt}\frac{K(z)\rho_c(t)K^\dag(z)}{p_c(z)}$</p>
+<p>$\mathcal{L}$はシステムのダイナミクスを記述するリュウビル演算子 (測定に依存しない部分)</p>
+<p>これを各軌跡に対して期待値をとると, 連続測定一般に成り立つマスター方程式が得られる.</p>
+<p>$\partial_t\rho(t)=\mathcal{L}\rho(t)+\lambda \mathcal{D}[A]\rho(t)$</p>
+<p>第一項は測定がないときの時間発展, 第2項は測定によるbackactionを表す.</p>
+<p>$\mathcal{L}\rho=-i[H, \rho]$として, $L=\sqrt{\lambda}A$とするとチャネルが1つのときのLindbladに一致</p>
+<p>SSEを考えるとdiffusion measurement (homodyne detection) に一致することもわかる.</p>
+</section>
+<section id="sse">
+<h3>SSE<a class="headerlink" href="#sse" title="Link to this heading"></a></h3>
+<p>測定値$z$は以下のように書かれる.</p>
+<p>$z=\langle A\rangle + \frac{1}{2\sqrt{\lambda}}\frac{dW}{dt}$</p>
+<p>これを用いて条件付き密度演算子を$dt$のオーダで展開するとSSEが得られる.</p>
+<p>$d\rho_c=dt\mathcal{L}\rho_c+\lambda dt \mathcal{D}[A]\rho_c+\sqrt{\lambda}dW{A-\langle A\rangle, \rho_c}$</p>
+<p>$\mathcal{L}\rho_c$の部分は$-i[H, \rho_c]$と書かれることも多い. これはBelavkin (ベラフキン) 方程式と呼ばれる.</p>
+<p>第一項はシステムの時間発展, 第2項は測定のbackaction, 第3項は測定によるノイズを表す.</p>
+</section>
+</section>
+<section id="continuous-measuement-based-feedback-control">
+<h2>continuous measuement-based feedback control<a class="headerlink" href="#continuous-measuement-based-feedback-control" title="Link to this heading"></a></h2>
+<p>Belavkin方程式をフィードバックを含むように拡張する.</p>
+<p>システムのダイナミクスを測定結果依存にすればよいので$\mathcal{L}\rightarrow \mathcal{L[f(\boldsymbol{D})]}$と置き換えることになる.</p>
+<p>ここで$\boldsymbol{D}$は測定結果の軌跡, $f(\cdot)$は測定結果に対する任意の関数 (feedback前に実行される).</p>
+<p>取り扱いを単純にするためにMarkovian feedback (feedbackプロトコルが直前の測定結果$D$のみに依存) を考えるときは$f(\boldsymbol{D})\rightarrow D$とすればよい.</p>
+<p>このとき測定結果$z$に比例したフィードバックを与える事を考える. つまり</p>
+<p>$\mathcal{L}(z)=\mathcal{L}_0+z\mathcal{K}=\mathcal{L_0}+\langle A\rangle\mathcal{K}+\frac{1}{2\sqrt{\lambda}}\frac{dW}{dt}\mathcal{K}$</p>
+<p>ここで$\mathcal{L}_0$はフィードバックがないときのシステムのダイナミクスを記述. $\mathcal{K}$はフィードバックを記述するLiouville superoperator.</p>
+<p>$e^{\mathcal{L}(z)dt}\simeq 1+dt\mathcal{L}_0+\langle A\rangle dt \mathcal{K} + dt \mathcal{K}^2/8\lambda+dW\mathcal{K}/\sqrt{4\lambda}$を用いると ($E[dW^2]=dt$を用いた)</p>
+<p>SSEは
+$
+d \hat{\rho}_c = dt \mathcal{L}_0 \hat{\rho}_c + \lambda dt \mathcal{D}[\hat{A}] \hat{\rho}_c + \frac{dt}{2} \mathcal{K}{\hat{A}, \hat{\rho}_c} + \frac{dt}{8 \lambda} \mathcal{K}^2 \hat{\rho}_c + dW \left[\sqrt{\lambda} {\hat{A} - \langle \hat{A} \rangle_c, \hat{\rho}_c} + \frac{1}{\sqrt{4 \lambda}} \mathcal{K} \hat{\rho}_c\right].
+$</p>
+<p>全てのトラジェクトリについて平均をとるとWiseman-Milburn方程式が得られる.
+$
+\partial_t \hat{\rho} = \mathcal{L}_0 \hat{\rho} + \lambda \mathcal{D}[\hat{A}] \hat{\rho} + \frac{1}{2} \mathcal{K}{\hat{A}, \hat{\rho}} + \frac{1}{8 \lambda} \mathcal{K}^2 \hat{\rho},
+$</p>
+<p>第1, 2項は連続測定のマスター方程式に由来. 第3項はfeedback forcesがどのように働くかを表す. 第4項はノイズ項 $dW$に由来していて, 測定ノイズがどのようにfeedbackされるかを表す. $\lambda$が大きくなると検出器のノイズが小さくなり, その効果は小さくなる.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../tlme/tlme.html" class="btn btn-neutral float-left" title="Lindblad formed Time Local Master Equationの導出" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../feedback_qec/feedback_qec.html" class="btn btn-neutral float-right" title="連続測定によるフィードバックを用いた量子誤り訂正" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, HayatoYunoki.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
