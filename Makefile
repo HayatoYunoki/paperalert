@@ -18,3 +18,10 @@ help:
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+# Custom target to build and move files to the root
+deploy:
+	@echo "Building HTML..."
+	$(MAKE) html
+	@echo "Copying files to root..."
+	cp -r ./build/html/* .
